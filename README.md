@@ -1,5 +1,5 @@
 # Video Face Analyzer
-
+![Python tests](https://github.com/jhimmyik9-netizen/video-face-analyzer/actions/workflows/tests.yml/badge.svg)
 Aplicación desarrollada en Python para detectar rostros en videos utilizando OpenCV y un clasificador Haar preentrenado.
 
 ## Características
