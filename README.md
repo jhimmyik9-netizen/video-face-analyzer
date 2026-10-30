@@ -1,61 +1,101 @@
 # Video Face Analyzer
 
-Aplicación de línea de comandos en Python para detectar rostros en videos, dibujar rectángulos y exportar detecciones a CSV. Utiliza OpenCV y su clasificador Haar preentrenado.
+Aplicación desarrollada en Python para detectar rostros en videos utilizando OpenCV y un clasificador Haar preentrenado.
 
-## Funcionalidades
+## Características
 
-- Lee videos locales.
-- Detecta rostros en fotogramas.
-- Genera un video anotado.
-- Exporta `frame`, tiempo, número de rostros y coordenadas a CSV.
-- Permite analizar cada N fotogramas para reducir el tiempo de procesamiento.
-- Incluye pruebas unitarias con pytest.
+- Lectura de videos locales.
+- Detección de rostros en cada fotograma analizado.
+- Dibujo de rectángulos alrededor de los rostros detectados.
+- Generación de un video con las detecciones.
+- Exportación de resultados a un archivo CSV.
+- Selección del intervalo de fotogramas para optimizar el procesamiento.
+- Pruebas automatizadas con pytest.
+
+## Tecnologías utilizadas
+
+- Python 3.12
+- OpenCV
+- NumPy
+- pytest
+- Git y GitHub Actions
 
 ## Instalación
 
-```bash
-python -m venv .venv
-# Windows PowerShell:
-.venv\Scripts\Activate.ps1
-# macOS/Linux:
-# source .venv/bin/activate
+Clona el repositorio:
 
-pip install -r requirements.txt
+```bash
+git clone https://github.com/jhimmyik9-netizen/video-face-analyzer.git
+cd video-face-analyzer
+```
+
+Crea un entorno virtual:
+
+**Windows (PowerShell):**
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+**Linux / macOS:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Instala las dependencias:
+
+```bash
+python -m pip install -r requirements.txt
 ```
 
 ## Uso
+
+Analizar un video:
 
 ```bash
 python face_analyzer.py --input "data/demo.mp4" --output "output/annotated.mp4" --csv "output/detections.csv"
 ```
 
-Analizar cada quinto fotograma:
+Analizar cada cinco fotogramas:
 
 ```bash
 python face_analyzer.py --input "data/demo.mp4" --sample-every 5
 ```
 
-Ejecutar pruebas:
+Los archivos de salida se pueden guardar en la carpeta `output/`.
+
+## Pruebas
+
+Ejecuta las pruebas automatizadas con:
 
 ```bash
-pytest -v
+python -m pytest -v
 ```
 
-## Estructura
+## Estructura del proyecto
 
 ```text
 video-face-analyzer/
-├── face_analyzer.py
-├── requirements.txt
+├── .github/
+│   └── workflows/
+│       └── tests.yml
 ├── tests/
 │   └── test_face_analyzer.py
-└── README.md
+├── face_analyzer.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ## Limitaciones
 
-Haar es un detector clásico y puede fallar con rostros pequeños, perfiles, poca luz u oclusiones. Esta versión detecta rostros, no identifica a las personas. Para una evolución, se pueden comparar detectores y medir precisión/recall sobre un conjunto de datos autorizado.
+El detector Haar es un método clásico de detección de rostros. Puede presentar limitaciones ante rostros pequeños, perfiles, iluminación deficiente u oclusiones.
 
-## Privacidad
+Esta aplicación detecta rostros, pero no identifica la identidad de las personas.
 
-Utiliza únicamente videos propios o para los que tengas permiso. No publiques videos personales ni datos biométricos en el repositorio.
+## Privacidad y uso responsable
+
+Utiliza videos propios o materiales para los que tengas autorización. Evita publicar videos personales o datos biométricos sin consentimiento.
